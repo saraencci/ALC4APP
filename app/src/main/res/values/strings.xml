@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ALC4app</string>
+    <string name="welcome2alc">Welcome to ALC 4.0</string>
+    <string name="about_alc">ABOUT ALC</string>
+    <string name="my_profile">MY PROFILE</string>
+    <string name="frankline_owino">Frankline Owino</string>
+    <string name="track">Track                                     : Android</string>
+    <string name="country">Country                                 : Kenya</string>
+    <string name="track_android">Track : android</string>
+    <string name="country_kenya">Country : Kenya</string>
+    <string name="email_franksaraencci_gmail_com">email : franksaraencci@gmail.com</string>
+    <string name="phone_number_254791000911">Phone Number : 254791000911</string>
+    <string name="slack_username_kingpin">Slack Username : @kingpin</string>
+    <string name="todo">TODO</string>
+</resources>

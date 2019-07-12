@@ -1,0 +1,55 @@
+package com.saraencci.alc4app;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.http.SslError;
+import android.os.Bundle;
+import android.view.View;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+public class myWeb extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTitle(" About ALC");
+        setContentView(R.layout.activity_myweb);
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        String url ="https://andela.com/alc/";
+        WebView webView;
+        webView = (WebView)findViewById(R.id.webView);
+
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setDatabaseEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+
+
+        webView.getSettings().setGeolocationEnabled(true);
+        webView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+
+            }
+        });
+        webView.loadUrl(url);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+}
+
+
+
+

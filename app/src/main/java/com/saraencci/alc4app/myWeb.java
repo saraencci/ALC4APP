@@ -9,6 +9,11 @@ import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+
+import java.net.InetAddress;
 
 public class myWeb extends AppCompatActivity {
 
@@ -23,31 +28,44 @@ public class myWeb extends AppCompatActivity {
         WebView webView;
         webView = (WebView)findViewById(R.id.webView);
 
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setAppCacheEnabled(true);
-        webView.getSettings().setDatabaseEnabled(true);
-        webView.getSettings().setDomStorageEnabled(true);
-        webView.getSettings().setSupportZoom(true);
-        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.getSettings().setBuiltInZoomControls(true);
+//checkiing for network connection
+
+        if (InternetConnection.checkConnection(this)) {
+            Toast.makeText(this, "network availabe", Toast.LENGTH_SHORT).show();
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.getSettings().setAppCacheEnabled(true);
+            webView.getSettings().setDatabaseEnabled(true);
+            webView.getSettings().setDomStorageEnabled(true);
+            webView.getSettings().setSupportZoom(true);
+            webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+            webView.getSettings().setBuiltInZoomControls(true);
 
 
-        webView.getSettings().setGeolocationEnabled(true);
-        webView.setWebViewClient(new WebViewClient(){
+            webView.getSettings().setGeolocationEnabled(true);
+            webView.setWebViewClient(new WebViewClient(){
 
-            @Override
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                handler.proceed();
+                @Override
+                public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                    handler.proceed();
 
-            }
-        });
-        webView.loadUrl(url);
+                }
+            });
+            webView.loadUrl(url);
+
+        } else {
+            // Not Available...
+            Toast.makeText(this, "NO INTERNET CONNECTION", Toast.LENGTH_LONG).show();
+        }
+
+
     }
     @Override
     public boolean onSupportNavigateUp(){
         finish();
         return true;
     }
+
+
 }
 
 

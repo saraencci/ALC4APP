@@ -31,7 +31,8 @@ public class myWeb extends AppCompatActivity {
 //checkiing for network connection
 
         if (InternetConnection.checkConnection(this)) {
-            Toast.makeText(this, "network availabe", Toast.LENGTH_SHORT).show();
+            //network not available
+           // Toast.makeText(this, "network availabe", Toast.LENGTH_SHORT).show();
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setAppCacheEnabled(true);
             webView.getSettings().setDatabaseEnabled(true);
@@ -53,7 +54,7 @@ public class myWeb extends AppCompatActivity {
             webView.loadUrl(url);
 
         } else {
-            // Not Available...
+            // Network not Available...
             Toast.makeText(this, "NO INTERNET CONNECTION", Toast.LENGTH_LONG).show();
         }
 
